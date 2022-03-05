@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block home %}active{% endblock home %}
+
+{% block title %} Home{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="p-4 p-md-5 mt-2 mb-4 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">Programming-Blog</h1>
+        <p class="lead my-3">In this Blog application our motive is to published Programming language related Blog:</p>
+        <p class="lead mb-0"><a class="text-light font-weight-bold" href="{% url 'blog_home' %}" class="text-white fw-bold">Continue reading...</a></p>
+        </div>
+        </div>
+    </div>
+
+    <div class="container">
+      <h3>Coding Articles by iCoder:</h3>
+        <div class="col my-4 p-4 d-flex flex-column position-static border">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <div class="my-2">
+            <a href="#" class="btn btn-primary">Continue reading</a>
+          </div>
+        </div>
+    </div>
+{% endblock content %}

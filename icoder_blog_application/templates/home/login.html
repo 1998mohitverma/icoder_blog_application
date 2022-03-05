@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<!--start-->
+<div class="container-fluid">
+  <div class="container">
+      <div class="col-sm-8 offset-2 border bg-light" style="margin-top:40px;">
+          <div class="row">
+              <div class="col-sm-4">
+                  <img src="{% static 'images/f.jpg' %}" alt="icon" style="width:100%;margin-top:50px;">
+              </div>
+              <div class="col-sm-8">
+                <h2 class="text-center mt-2 alert alert-primary">Login:</h2>
+                <hr>
+                <form action="" method="POST">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" placeholder="username" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Password:</label>
+                        <input type="password" id="pass" name="pass" placeholder="Password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" value="Login" class="btn btn-primary">
+                    </div>
+                    <p>If you are not registerd user than click,<a href="{% url 'signup' %}"> signup</a></p>
+              </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--end-->
+{% endblock content %}

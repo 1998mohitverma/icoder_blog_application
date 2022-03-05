@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block about %}active{% endblock about %}
+
+{% block title %}About{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-5" style="margin-top:60px;">
+            <img src="{% static 'images/e.jpg' %}" alt="about-us" style="border:10px solid blue;">
+        </div>
+
+        <div class="col-sm-6 text-center" style="margin-top:60px;">
+            <h2 class="alert alert-primary">Something about This Project:</h2>
+            <hr>
+            <p>In This Project I have created simple Blog application by using <span style="color:red;">Python django</span></p>
+            <ul style="list-style:None;">
+            <p>Technologies used in this project is:- </p>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Bootstrap</li>
+                <li>python</li>
+                <li>Django</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

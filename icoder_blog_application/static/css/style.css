@@ -1,0 +1,12 @@
+.nav-link{
+    color:white !important;
+}
+.nav-link:hover{
+    background-color: turquoise;
+    border-radius: 10px;
+    color:black ! important;
+}
+.navbar-brand:hover{
+    color:yellow ! important;
+    font-weight: bold;
+}

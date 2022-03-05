@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>ICoder-Blog | {% block title %}{% endblock title %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<body>
+    <!--start navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark alert bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Blog-Application</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item {% block homeactive %}{% endblock homeactive %}">
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item {% block blogactive %}{% endblock blogactive %}">
+            <a class="nav-link" href="{% url 'blog_home' %}">Blog</a>
+            </li>
+            <li class="nav-item {% block aboutactive %}{% endblock aboutactive %}">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item {% block contactactive %}{% endblock contactactive %}">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+        </ul>
+        <div class="ml-auto form-inline">
+        <form class="d-flex mr-1" method="get" action="/search">
+            <input class="form-control me-2 mr-1" type="search" name="query" placeholder="Search" aria-label="Search">
+            <input type="submit" value="Search" class="btn btn-outline-success">
+        </form>
+        <div>
+        <!--button for login-->
+        {% if request.user.is_authenticated %}
+          <ul class="navbar-nav ml-auto">
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
+                  Welcome {{request.user.first_name}}
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                </div>
+              </li>
+          </ul>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-primary mr-1">Login<a/>
+          <!--button for signup-->
+          <a href="{% url 'signup' %}" class="btn btn-success mr-1">Signup</a>
+        {% endif %}
+
+        </div>
+    </div>
+    </nav>
+    <!--Ending navbar-->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}} mb-0 alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Message: </strong>{{message}}.
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    
+
+    {% block content %}{% endblock content %}
+
+
+</body>
+</html>
